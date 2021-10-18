@@ -23,7 +23,8 @@ final class Match {
     }
 
     public void secondPlayerScore() {
-        game = new Game(Point.LOVE + Score.SEPARATOR + new Point().next());
+        game = new Game(null);
+        game.rightPlayerScore();
     }
 
     public String currentGameScore() {

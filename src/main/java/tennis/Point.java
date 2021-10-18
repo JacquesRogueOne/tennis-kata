@@ -7,10 +7,14 @@ public class Point implements Iterator<String> {
     public static final String FIFTEEN = "15";
     public static final String THIRTY = "30";
 
-    private String current;
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
 
     public Point() {
-        current = "0";
+        value = "0";
     }
 
     @Override
@@ -20,11 +24,11 @@ public class Point implements Iterator<String> {
 
     @Override
     public String next() {
-        switch (current) {
-            case LOVE -> current = FIFTEEN;
-            case FIFTEEN -> current = THIRTY;
-            default -> current = LOVE;
+        switch (value) {
+            case LOVE -> value = FIFTEEN;
+            case FIFTEEN -> value = THIRTY;
+            default -> value = LOVE;
         }
-        return current;
+        return value;
     }
 }
