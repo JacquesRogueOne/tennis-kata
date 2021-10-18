@@ -15,11 +15,15 @@ final class Match {
     private Game game;
 
     public void firstPlayerScore() {
-        game = new Game("15 - 0");
+        if (game != null && game.score().equals(Point.FIFTEEN + Score.SEPARATOR + Point.LOVE)) {
+            game = new Game(Point.THIRTY + Score.SEPARATOR + Point.LOVE);
+            return;
+        }
+        game = new Game(new Point().next() + Score.SEPARATOR + Point.LOVE);
     }
 
     public void secondPlayerScore() {
-        game = new Game("0 - 15");
+        game = new Game(Point.LOVE + Score.SEPARATOR + new Point().next());
     }
 
     public String currentGameScore() {
