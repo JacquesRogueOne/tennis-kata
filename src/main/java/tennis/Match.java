@@ -4,26 +4,22 @@ import java.util.Objects;
 
 final class Match {
     private final String status;
+    private final Game game;
+
     Match() {
         this.status = "In Progress";
+        game = new Game();
     }
 
     public String getStatus() {
         return status;
     }
 
-    private Game game;
-
     public void firstPlayerScore() {
-        if (game != null && game.score().equals(Point.FIFTEEN + Score.SEPARATOR + Point.LOVE)) {
-            game = new Game(Point.THIRTY + Score.SEPARATOR + Point.LOVE);
-            return;
-        }
-        game = new Game(new Point().next() + Score.SEPARATOR + Point.LOVE);
+        game.leftPlayerScore();
     }
 
     public void secondPlayerScore() {
-        game = new Game(null);
         game.rightPlayerScore();
     }
 
