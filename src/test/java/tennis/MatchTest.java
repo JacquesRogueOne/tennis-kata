@@ -33,5 +33,14 @@ class MatchTest {
             assertThat(currentGameScore).isEqualTo("15 - 0");
         }
 
+        @Test
+        void has_to_be_0_15_when_the_player_two_score_the_first_point() {
+            // Arrange & Act
+            match.secondPlayerScore();
+            String currentGameScore = match.currentGameScore();
+
+            // Assert
+            assertThat(currentGameScore).isEqualTo("0 - 15");
+        }
     }
 }

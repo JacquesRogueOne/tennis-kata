@@ -4,7 +4,6 @@ import java.util.Objects;
 
 final class Match {
     private final String status;
-
     Match() {
         this.status = "In Progress";
     }
@@ -13,12 +12,17 @@ final class Match {
         return status;
     }
 
-    public void firstPlayerScore() {
+    private Game game;
 
+    public void firstPlayerScore() {
+        game = new Game("15 - 0");
+    }
+
+    public void secondPlayerScore() {
+        game = new Game("0 - 15");
     }
 
     public String currentGameScore() {
-        Game game = new Game("15 - 0");
         return game.score();
     }
 
