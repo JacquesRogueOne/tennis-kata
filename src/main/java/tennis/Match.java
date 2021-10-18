@@ -13,6 +13,15 @@ final class Match {
         return status;
     }
 
+    public void firstPlayerScore() {
+
+    }
+
+    public String currentGameScore() {
+        Game game = new Game("15 - 0");
+        return game.score();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == this) return true;

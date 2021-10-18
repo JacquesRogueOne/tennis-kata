@@ -20,5 +20,4 @@ class TennisKataTest {
         assertThat(match).isEqualTo(new Match());
     }
 
-
 }
