@@ -2,6 +2,7 @@ package tennis;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -20,15 +21,17 @@ class MatchTest {
         assertThat(status).isEqualTo("In Progress");
     }
 
-    @Test
-    void in_a_new_game_when_the_player_one_score_a_point_then_the_game_current_score_has_to_be_15_0() {
-        // Arrange
+    @Nested
+    class currentGameScore {
+        @Test
+        void has_to_be_15_0_when_the_player_one_score_the_first_point() {
+            // Arrange & Act
+            match.firstPlayerScore();
+            String currentGameScore = match.currentGameScore();
 
-        // Act
-        match.firstPlayerScore();
-        String currentGameScore = match.currentGameScore();
+            // Assert
+            assertThat(currentGameScore).isEqualTo("15 - 0");
+        }
 
-        // Assert
-        assertThat(currentGameScore).isEqualTo("15 - 0");
     }
 }
