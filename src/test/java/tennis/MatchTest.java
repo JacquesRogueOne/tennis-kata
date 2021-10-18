@@ -7,18 +7,16 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class TennisKataTest {
+class MatchTest {
     @Test
-    void begin_should_start_a_new_match() {
+    void getStatus_should_return_in_progress_when_the_match_just_start() {
         // Arrange
-        TennisKata tennisKata = new TennisKata();
+        Match match = new Match();
 
         // Act
-        Match match = tennisKata.begin();
+        String status = match.getStatus();
 
         // Assert
-        assertThat(match).isEqualTo(new Match());
+        assertThat(status).isEqualTo("In Progress");
     }
-
-
 }
