@@ -22,7 +22,7 @@ public class Point {
         this.value = value;
     }
 
-    public void next() {
+    public void goToTheNextValue() {
         switch (value) {
             case LOVE -> value = FIFTEEN;
             case FIFTEEN -> value = THIRTY;

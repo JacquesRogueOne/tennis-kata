@@ -35,14 +35,14 @@ public class PointTest {
     }
 
     @Nested
-    class next {
+    class goToTheNextValue {
         @Test
         void should_return_fifteen_when_value_is_love() {
             // Arrange
             var point = new Point(Point.LOVE);
 
             // Act
-            point.next();
+            point.goToTheNextValue();
             var pointValue = point.getValue();
 
             // Assert
@@ -55,7 +55,7 @@ public class PointTest {
             var point = new Point(Point.FIFTEEN);
 
             // Act
-            point.next();
+            point.goToTheNextValue();
             var pointValue = point.getValue();
 
             // Assert
@@ -68,7 +68,7 @@ public class PointTest {
             var point = new Point(Point.THIRTY);
 
             // Act
-            point.next();
+            point.goToTheNextValue();
             var pointValue = point.getValue();
 
             // Assert

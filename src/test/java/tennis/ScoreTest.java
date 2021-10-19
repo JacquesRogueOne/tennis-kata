@@ -2,6 +2,7 @@ package tennis;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,31 +10,63 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 public class ScoreTest {
 
-    @Test
-    void incrementLeftPoint_should_increment_left_player_point() {
-        // Arrange
-        var score = new Score();
+    @Nested
+    class incrementLeftPoint {
+        @Test
+        void should_increment_left_player_point() {
+            // Arrange
+            var score = new Score();
 
-        // Act
-        score.incrementLeftPoint();
+            // Act
+            score.incrementLeftPoint();
 
-        // Assert
-        var expectedPoint = new Point();
-        expectedPoint.next();
-        assertThat(score.getLeftPoint()).isEqualTo(expectedPoint);
+            // Assert
+            var expectedPoint = new Point();
+            expectedPoint.goToTheNextValue();
+            assertThat(score.getLeftPoint()).isEqualTo(expectedPoint);
+        }
+
+        @Test
+        void should_update_if_left_player_win_the_game() {
+            // Arrange
+            var score = new Score(new Point(Point.FORTY), new Point());
+
+            // Act
+            score.incrementLeftPoint();
+            var hasLeftPlayerWin = score.hasLeftPlayerWin();
+
+            // Assert
+            assertThat(hasLeftPlayerWin).isTrue();
+        }
     }
 
-    @Test
-    void incrementRightPoint_should_increment_right_player_point() {
-        // Arrange
-        var score = new Score();
+    @Nested
+    class incrementRightPoint {
+        @Test
+        void should_increment_right_player_point() {
+            // Arrange
+            var score = new Score();
 
-        // Act
-        score.incrementRightPoint();
+            // Act
+            score.incrementRightPoint();
 
-        // Assert
-        var expectedPoint = new Point();
-        expectedPoint.next();
-        assertThat(score.getRightPoint()).isEqualTo(expectedPoint);
+            // Assert
+            var expectedPoint = new Point();
+            expectedPoint.goToTheNextValue();
+            assertThat(score.getRightPoint()).isEqualTo(expectedPoint);
+        }
+
+        @Test
+        void should_update_if_right_player_win_the_game() {
+            // Arrange
+            var score = new Score(new Point(), new Point(Point.FORTY));
+
+            // Act
+            score.incrementRightPoint();
+            var hasRightPlayerWin = score.hasRightPlayerWin();
+
+            // Assert
+            assertThat(hasRightPlayerWin).isTrue();
+        }
     }
 }

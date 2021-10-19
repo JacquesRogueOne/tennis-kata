@@ -5,10 +5,16 @@ public class Score {
 
     private final Point leftPoint;
     private final Point rightPoint;
+    private boolean leftPlayerWin;
+    private boolean rightPlayerWin;
 
     public Score() {
-        leftPoint = new Point();
-        rightPoint = new Point();
+        this(new Point(), new Point());
+    }
+
+    Score(Point leftPoint, Point rightPoint) {
+        this.leftPoint = leftPoint;
+        this.rightPoint = rightPoint;
     }
 
     public Point getLeftPoint() {
@@ -20,20 +26,26 @@ public class Score {
     }
 
     public void incrementLeftPoint() {
-        leftPoint.next();
+        if (leftPoint.isClosedToGoal()) {
+            leftPlayerWin = true;
+            return;
+        }
+        leftPoint.goToTheNextValue();
     }
 
     public void incrementRightPoint() {
-        rightPoint.next();
+        if (rightPoint.isClosedToGoal()) {
+            rightPlayerWin = true;
+            return;
+        }
+        rightPoint.goToTheNextValue();
     }
 
     public boolean hasLeftPlayerWin() {
-        // TODO
-        return false;
+        return leftPlayerWin;
     }
 
     public boolean hasRightPlayerWin() {
-        // TODO
-        return false;
+        return rightPlayerWin;
     }
 }
