@@ -7,6 +7,7 @@ public class Point implements Iterator<String> {
     public static final String LOVE = "0";
     public static final String FIFTEEN = "15";
     public static final String THIRTY = "30";
+    public static final String FORTY = "40";
 
     private String value;
 
@@ -15,12 +16,16 @@ public class Point implements Iterator<String> {
     }
 
     public Point() {
-        value = "0";
+        value = LOVE;
+    }
+
+    Point(String value) {
+        this.value = value;
     }
 
     @Override
     public boolean hasNext() {
-        return true;
+        return !value.equals(FORTY);
     }
 
     @Override
@@ -28,6 +33,7 @@ public class Point implements Iterator<String> {
         switch (value) {
             case LOVE -> value = FIFTEEN;
             case FIFTEEN -> value = THIRTY;
+            case THIRTY -> value = FORTY;
             default -> value = LOVE;
         }
         return value;
