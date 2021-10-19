@@ -295,6 +295,60 @@ class GameTest {
             // Assert
             assertThat(state).isEqualTo("40 - 40");
         }
+
+        @Test
+        void should_return_advantage_left_when_left_player_score_after_40_40() {
+            // Arrange & Act
+            var state = game.operateTransition("40 - 40", LEFT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("ADVANTAGE LEFT");
+        }
+
+        @Test
+        void should_return_advantage_right_when_right_player_score_after_40_40() {
+            // Arrange & Act
+            var state = game.operateTransition("40 - 40", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("ADVANTAGE RIGHT");
+        }
+
+        @Test
+        void should_return_deuce_when_right_player_score_after_advantage_left() {
+            // Arrange & Act
+            var state = game.operateTransition("ADVANTAGE LEFT", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("DEUCE");
+        }
+
+        @Test
+        void should_return_deuce_when_left_player_score_after_advantage_right() {
+            // Arrange & Act
+            var state = game.operateTransition("ADVANTAGE RIGHT", LEFT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("DEUCE");
+        }
+
+        @Test
+        void should_return_right_win_when_right_player_score_after_advantage_right() {
+            // Arrange & Act
+            var state = game.operateTransition("ADVANTAGE RIGHT", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("RIGHT WIN");
+        }
+
+        @Test
+        void should_return_left_win_when_left_player_score_after_advantage_left() {
+            // Arrange & Act
+            var state = game.operateTransition("ADVANTAGE LEFT", LEFT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("LEFT WIN");
+        }
     }
 
 }

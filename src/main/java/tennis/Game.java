@@ -30,6 +30,12 @@ public class Game {
 
     static Map<String, Map<ScoreAPoint, String>> states;
 
+    public static final String ADVANTAGE_LEFT = "ADVANTAGE LEFT";
+
+    public static final String ADVANTAGE_RIGHT = "ADVANTAGE RIGHT";
+
+    public static final String DEUCE = "DEUCE";
+
     static{
         states = new HashMap<>();
         states.put(INITIAL, Map.of(
@@ -92,7 +98,18 @@ public class Game {
                 LEFT_PLAYER, LEFT_WIN,
                 RIGHT_PLAYER, FORTY_A
         ));
-
+        states.put(FORTY_A, Map.of(
+                LEFT_PLAYER, ADVANTAGE_LEFT,
+                RIGHT_PLAYER, ADVANTAGE_RIGHT
+        ));
+        states.put(ADVANTAGE_LEFT, Map.of(
+                LEFT_PLAYER, LEFT_WIN,
+                RIGHT_PLAYER, DEUCE
+        ));
+        states.put(ADVANTAGE_RIGHT, Map.of(
+                LEFT_PLAYER, DEUCE,
+                RIGHT_PLAYER, RIGHT_WIN
+        ));
     }
 
     public String getState() {
