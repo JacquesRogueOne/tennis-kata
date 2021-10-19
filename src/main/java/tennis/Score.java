@@ -26,4 +26,14 @@ public class Score {
     public void incrementRightPoint() {
         rightPoint.next();
     }
+
+    public boolean hasLeftPlayerWin() {
+        // TODO
+        return false;
+    }
+
+    public boolean hasRightPlayerWin() {
+        // TODO
+        return false;
+    }
 }
