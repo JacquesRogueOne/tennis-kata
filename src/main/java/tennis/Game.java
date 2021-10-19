@@ -73,19 +73,24 @@ public class Game {
                 LEFT_PLAYER, FIFTEEN_THIRTY
         ));
         states.put(LOVE_FORTY, Map.of(
-                RIGHT_PLAYER, RIGHT_WIN
+                RIGHT_PLAYER, RIGHT_WIN,
+                LEFT_PLAYER, FIFTEEN_FORTY
         ));
         states.put(FIFTEEN_FORTY, Map.of(
-                RIGHT_PLAYER, RIGHT_WIN
+                RIGHT_PLAYER, RIGHT_WIN,
+                LEFT_PLAYER, THIRTY_FORTY
         ));
         states.put(FORTY_LOVE, Map.of(
-                LEFT_PLAYER, LEFT_WIN
+                LEFT_PLAYER, LEFT_WIN,
+                RIGHT_PLAYER, FORTY_FIFTEEN
         ));
         states.put(FORTY_FIFTEEN, Map.of(
-                LEFT_PLAYER, LEFT_WIN
+                LEFT_PLAYER, LEFT_WIN,
+                RIGHT_PLAYER, FORTY_THIRTY
         ));
         states.put(FORTY_THIRTY, Map.of(
-                LEFT_PLAYER, LEFT_WIN
+                LEFT_PLAYER, LEFT_WIN,
+                RIGHT_PLAYER, FORTY_A
         ));
 
     }

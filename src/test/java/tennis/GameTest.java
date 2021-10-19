@@ -12,7 +12,7 @@ import static tennis.Game.ScoreAPoint.RIGHT_PLAYER;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class GameTest {
 
-    private Game game = new Game();;
+    private final Game game = new Game();
 
     @Test
     void when_begin_a_game_the_state_has_to_be_0_to_0() {
@@ -234,7 +234,7 @@ class GameTest {
         }
 
         @Test
-        void should_return_left_win_when_left_player_score_after_15_40() {
+        void should_return_left_win_when_left_player_score_after_40_15() {
             // Arrange & Act
             var state = game.operateTransition("40 - 15", LEFT_PLAYER);
 
@@ -243,7 +243,7 @@ class GameTest {
         }
 
         @Test
-        void should_return_left_win_when_left_player_score_after_30_40() {
+        void should_return_left_win_when_left_player_score_after_40_30() {
             // Arrange & Act
             var state = game.operateTransition("40 - 30", LEFT_PLAYER);
 
@@ -251,6 +251,50 @@ class GameTest {
             assertThat(state).isEqualTo("LEFT WIN");
         }
 
+        @Test
+        void should_return_15_40_when_left_player_score_after_0_40() {
+            // Arrange & Act
+            var state = game.operateTransition("0 - 40", LEFT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("15 - 40");
+        }
+
+        @Test
+        void should_return_30_40_when_left_player_score_after_15_40() {
+            // Arrange & Act
+            var state = game.operateTransition("15 - 40", LEFT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("30 - 40");
+        }
+
+        @Test
+        void should_return_40_15_when_right_player_score_after_40_0() {
+            // Arrange & Act
+            var state = game.operateTransition("40 - 0", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("40 - 15");
+        }
+
+        @Test
+        void should_return_40_30_when_left_player_score_after_40_15() {
+            // Arrange & Act
+            var state = game.operateTransition("40 - 15", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("40 - 30");
+        }
+
+        @Test
+        void should_return_40_40_when_right_player_score_after_40_30() {
+            // Arrange & Act
+            var state = game.operateTransition("40 - 30", RIGHT_PLAYER);
+
+            // Assert
+            assertThat(state).isEqualTo("40 - 40");
+        }
     }
 
 }
