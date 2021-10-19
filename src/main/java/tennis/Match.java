@@ -24,7 +24,7 @@ final class Match {
     }
 
     public String currentGameScore() {
-        return game.score();
+        return game.representation();
     }
 
     @Override

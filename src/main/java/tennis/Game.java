@@ -13,11 +13,23 @@ final class Game {
         this.score = score;
     }
 
-    public String score() {
-        return
-                score.getLeftPoint().getValue() +
-                Score.SEPARATOR +
-                score.getRightPoint().getValue();
+    public String representation() {
+        if (score.isDeuce()) {
+            return "deuce";
+        }
+        if (score.isAdvantageLeft()) {
+            return "advantage $leftPlayer";
+        }
+        if (score.isAdvantageRight()) {
+            return "advantage $rightPlayer";
+        }
+        return computeStandardScore();
+    }
+
+    private String computeStandardScore() {
+        return score.getLeftPoint().getValue() +
+        Score.SEPARATOR +
+        score.getRightPoint().getValue();
     }
 
     void leftPlayerScore() {

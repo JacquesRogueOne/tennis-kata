@@ -98,5 +98,56 @@ class GameTest {
             // Assert
             assertThat(rightPlayerWinTheGame).isTrue();
         }
+
+        @Test
+        void representation_should_return_standard_score_when_beginning_of_a_game() {
+            // Arrange & Act
+            var representation = game.representation();
+
+            // Assert
+            assertThat(representation).isEqualTo("0 - 0");
+        }
+
+        @Test
+        void representation_should_return_deuce_when_score_is_deuce() {
+            // Arrange
+            var score = mock(Score.class);
+            var game = new Game(score);
+            when(score.isDeuce()).thenReturn(true);
+
+            // Act
+            var representation = game.representation();
+
+            // Assert
+            assertThat(representation).isEqualTo("deuce");
+        }
+
+        @Test
+        void representation_should_return_advantage_when_score_is_advantage_left() {
+            // Arrange
+            var score = mock(Score.class);
+            var game = new Game(score);
+            when(score.isAdvantageLeft()).thenReturn(true);
+
+            // Act
+            var representation = game.representation();
+
+            // Assert
+            assertThat(representation).isEqualTo("advantage $leftPlayer");
+        }
+        @Test
+        void representation_should_return_advantage_when_score_is_advantage_right() {
+            // Arrange
+            var score = mock(Score.class);
+            var game = new Game(score);
+            when(score.isAdvantageRight()).thenReturn(true);
+
+            // Act
+            var representation = game.representation();
+
+            // Assert
+            assertThat(representation).isEqualTo("advantage $rightPlayer");
+        }
+
     }
 }
