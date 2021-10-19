@@ -12,7 +12,7 @@ import static tennis.ScoreAPoint.RIGHT_PLAYER;
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class TieBreakTest {
 
-    private TieBreak tieBreak = new TieBreak();;
+    private TieBreak tieBreak = new TieBreak();
 
     @Test
     void getInitialState_should_return_0_0_when_tie_break_start() {
