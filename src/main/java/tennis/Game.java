@@ -3,8 +3,8 @@ package tennis;
 import java.util.HashMap;
 import java.util.Map;
 
-import static tennis.Game.ScoreAPoint.LEFT_PLAYER;
-import static tennis.Game.ScoreAPoint.RIGHT_PLAYER;
+import static tennis.ScoreAPoint.LEFT_PLAYER;
+import static tennis.ScoreAPoint.RIGHT_PLAYER;
 
 public class Game {
 
@@ -121,11 +121,6 @@ public class Game {
 
     public boolean isAWinningState(String state) {
         return LEFT_WIN.equals(state) || RIGHT_WIN.equals(state);
-    }
-
-    enum ScoreAPoint {
-        LEFT_PLAYER,
-        RIGHT_PLAYER
     }
 
 }

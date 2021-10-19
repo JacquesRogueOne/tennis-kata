@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tennis.Game.ScoreAPoint.LEFT_PLAYER;
-import static tennis.Game.ScoreAPoint.RIGHT_PLAYER;
+import static tennis.ScoreAPoint.LEFT_PLAYER;
+import static tennis.ScoreAPoint.RIGHT_PLAYER;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class GameTest {
