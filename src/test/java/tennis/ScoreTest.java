@@ -69,4 +69,16 @@ public class ScoreTest {
             assertThat(hasRightPlayerWin).isTrue();
         }
     }
+
+    @Test
+    void isDeuce_should_be_true_when_both_players_are_closed_to_goal() {
+        // Arrange
+        var score = new Score(new Point(Point.FORTY), new Point(Point.FORTY));
+
+        // Act
+        var deuce = score.isDeuce();
+
+        // Assert
+        assertThat(deuce).isTrue();
+    }
 }

@@ -48,4 +48,8 @@ public class Score {
     public boolean hasRightPlayerWin() {
         return rightPlayerWin;
     }
+
+    public boolean isDeuce() {
+        return rightPoint.isClosedToGoal() && leftPoint.isClosedToGoal();
+    }
 }
