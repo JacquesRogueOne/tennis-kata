@@ -19,4 +19,11 @@ public class Score {
         return rightPoint;
     }
 
+    public void incrementLeftPoint() {
+        leftPoint.next();
+    }
+
+    public void incrementRightPoint() {
+        rightPoint.next();
+    }
 }

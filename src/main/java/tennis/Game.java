@@ -3,8 +3,12 @@ package tennis;
 final class Game {
     private final Score score;
 
-    Game() {
-        this.score = new Score();
+    public Game() {
+        this(new Score());
+    }
+
+    Game(Score score) {
+        this.score = score;
     }
 
     public String score() {
@@ -15,10 +19,10 @@ final class Game {
     }
 
     void leftPlayerScore() {
-        score.getLeftPoint().next();
+        score.incrementLeftPoint();
     }
 
     void rightPlayerScore() {
-        score.getRightPoint().next();
+        score.incrementRightPoint();
     }
 }
