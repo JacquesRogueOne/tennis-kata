@@ -351,4 +351,21 @@ class GameTest {
         }
     }
 
+    @Test
+    void is_a_winning_state_should_return_true_when_state_is_left_win() {
+        // Arrange & Act
+        var actual = game.isAWinningState("LEFT WIN");
+
+        // Assert
+        assertThat(actual).isTrue();
+    }
+
+    @Test
+    void is_a_winning_state_should_return_true_when_state_is_right_win() {
+        // Arrange & Act
+        var actual = game.isAWinningState("RIGHT WIN");
+
+        // Assert
+        assertThat(actual).isTrue();
+    }
 }

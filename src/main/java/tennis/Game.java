@@ -24,18 +24,13 @@ public class Game {
     public static final String FORTY_FIFTEEN = "40 - 15";
     public static final String THIRTY_FORTY = "30 - 40";
     public static final String FORTY_THIRTY = "40 - 30";
-
     public static final String RIGHT_WIN = "RIGHT WIN";
     public static final String LEFT_WIN = "LEFT WIN";
-
-    static Map<String, Map<ScoreAPoint, String>> states;
-
     public static final String ADVANTAGE_LEFT = "ADVANTAGE LEFT";
-
     public static final String ADVANTAGE_RIGHT = "ADVANTAGE RIGHT";
-
     public static final String DEUCE = "DEUCE";
 
+    static Map<String, Map<ScoreAPoint, String>> states;
     static{
         states = new HashMap<>();
         states.put(INITIAL, Map.of(
@@ -122,6 +117,10 @@ public class Game {
 
     public String operateTransition(String state, ScoreAPoint player) {
         return states.get(state).get(player);
+    }
+
+    public boolean isAWinningState(String state) {
+        return LEFT_WIN.equals(state) || RIGHT_WIN.equals(state);
     }
 
     enum ScoreAPoint {
