@@ -1,9 +1,8 @@
 package tennis;
 
-import java.util.Iterator;
 import java.util.Objects;
 
-public class Point implements Iterator<String> {
+public class Point {
     public static final String LOVE = "0";
     public static final String FIFTEEN = "15";
     public static final String THIRTY = "30";
@@ -23,20 +22,16 @@ public class Point implements Iterator<String> {
         this.value = value;
     }
 
-    @Override
-    public boolean hasNext() {
-        return !value.equals(FORTY);
-    }
-
-    @Override
-    public String next() {
+    public void next() {
         switch (value) {
             case LOVE -> value = FIFTEEN;
             case FIFTEEN -> value = THIRTY;
             case THIRTY -> value = FORTY;
-            default -> value = LOVE;
         }
-        return value;
+    }
+
+    public boolean isClosedToGoal() {
+        return value.equals(FORTY);
     }
 
     @Override

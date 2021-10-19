@@ -11,15 +11,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PointTest {
 
     @Test
-    void hasNext_should_return_false_when_point_value_is_forty() {
+    void isClosedToGoal_should_return_true_when_value_is_forty() {
         // Arrange
         var point = new Point(Point.FORTY);
 
         // Act
-        boolean hasNext = point.hasNext();
+        boolean closedToGoal = point.isClosedToGoal();
 
         // Assert
-        assertThat(hasNext).isFalse();
+        assertThat(closedToGoal).isTrue();
+    }
+
+    @Test
+    void isClosedToGoal_should_return_false_when_value_is_not_forty() {
+        // Arrange
+        var point = new Point(Point.THIRTY);
+
+        // Act
+        boolean closedToGoal = point.isClosedToGoal();
+
+        // Assert
+        assertThat(closedToGoal).isFalse();
     }
 
     @Nested
@@ -62,6 +74,5 @@ public class PointTest {
             // Assert
             assertThat(pointValue).isEqualTo(Point.FORTY);
         }
-
     }
 }
