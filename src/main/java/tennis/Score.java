@@ -7,6 +7,9 @@ public class Score {
     private final Point rightPoint;
     private boolean leftPlayerWin;
     private boolean rightPlayerWin;
+    private boolean deuce;
+    private boolean advantageLeft;
+    private boolean advantageRight;
 
     public Score() {
         this(new Point(), new Point());
@@ -26,19 +29,53 @@ public class Score {
     }
 
     public void incrementLeftPoint() {
+        if (deuce) {
+            advantageLeft = true;
+            updateDeuceValueAfterAdvantage();
+            return;
+        }
+        if (advantageRight) {
+            advantageRight = false;
+            updateDeuceValueAfterEquality();
+            return;
+        }
         if (leftPoint.isClosedToGoal()) {
             leftPlayerWin = true;
             return;
         }
         leftPoint.goToTheNextValue();
+        updateDeuceValue();
+    }
+
+    private void updateDeuceValueAfterAdvantage() {
+        deuce = advantageLeft && advantageRight;
+    }
+
+    private void updateDeuceValueAfterEquality() {
+        deuce = !advantageLeft && !advantageRight;
+    }
+
+    private void updateDeuceValue() {
+        deuce = rightPoint.isClosedToGoal() && leftPoint.isClosedToGoal();
     }
 
     public void incrementRightPoint() {
+        if (deuce) {
+            advantageRight = true;
+            updateDeuceValueAfterAdvantage();
+            return;
+        }
+        if (advantageLeft) {
+            advantageLeft = false;
+            updateDeuceValueAfterEquality();
+            return;
+        }
         if (rightPoint.isClosedToGoal()) {
             rightPlayerWin = true;
             return;
         }
         rightPoint.goToTheNextValue();
+        updateDeuceValue();
     }
 
     public boolean hasLeftPlayerWin() {
@@ -50,6 +87,13 @@ public class Score {
     }
 
     public boolean isDeuce() {
-        return rightPoint.isClosedToGoal() && leftPoint.isClosedToGoal();
+        return deuce;
+    }
+
+    public boolean isAdvantageLeft() {
+        return advantageLeft;
+    }
+    public boolean isAdvantageRight() {
+        return advantageRight;
     }
 }
